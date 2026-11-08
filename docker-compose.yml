@@ -1,0 +1,24 @@
+name: mixdeck-sq
+services:
+  mixdeck-sq:
+    image: ghcr.io/daviied/mixdeck-sq:latest
+    container_name: mixdeck-sq
+    restart: unless-stopped
+    # Host networking: the SQ sends meters and RTA over UDP straight to this host.
+    network_mode: host
+    environment:
+      APP_PASSWORD: ${APP_PASSWORD}
+      SESSION_SECRET: ${SESSION_SECRET}
+      SQ_IP: ${SQ_IP:-}
+      SQ_MOCK: ${SQ_MOCK:-0}
+      PORT: ${PORT:-8080}
+    volumes:
+      - /DATA/AppData/mixdeck-sq:/data
+x-casaos:
+  main: mixdeck-sq
+  title:
+    en_us: MixDeck SQ
+  description:
+    en_us: Allen & Heath SQ-5 control with a DiGiCo-style view and console follow mode.
+  port_map: "8080"
+  category: Utilities

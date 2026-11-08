@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#14171b">
+<title>MixDeck SQ</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/desk.css">
+</head>
+<body>
+<div id="login" hidden>
+  <form id="loginForm">
+    <h1><img class="logo" src="/icons/icon-192.png" alt="">MixDeck SQ</h1>
+    <input id="pw" type="password" placeholder="Password" autocomplete="current-password" required>
+    <button class="primary">Log in</button>
+    <p id="loginErr"></p>
+  </form>
+</div>
+
+<div id="app" hidden>
+  <header class="top">
+    <div class="brand"><img class="logo" src="/icons/icon-192.png" alt=""><span>MixDeck SQ</span></div>
+    <div class="consoles" id="consoles"></div>
+    <span id="linkChip" class="linkchip" hidden></span>
+    <nav class="views" id="views"></nav>
+    <div class="right">
+      <div class="read" id="readBar" title="Reading console" hidden><i></i></div>
+      <div class="mon" id="mon"></div>
+      <button id="follow" title="Show what the console screen shows" hidden>Follow</button>
+      <button id="undo" title="Undo (Ctrl+Z)" disabled>Undo</button>
+      <button id="clearSolo" title="Clear all solo">Solo</button>
+      <button id="fullscreen" title="Full screen" aria-label="Full screen" hidden>⛶</button>
+    </div>
+  </header>
+  <div class="fbar" id="fbar" hidden></div>
+  <section class="view" id="v-follow"></section>
+
+  <section class="view" id="v-mix">
+    <div class="insp" id="insp"></div>
+    <div class="resizer" id="resizer"></div>
+    <div class="layerbar" id="layerbar"></div>
+    <div class="mixwrap">
+      <div class="strips" id="strips"></div>
+      <div class="masters" id="masters"></div>
+    </div>
+  </section>
+  <section class="view" id="v-desk"></section>
+  <section class="view page" id="v-settings"></section>
+  <div class="kbar" id="kbar" hidden></div>
+  <div id="toast"></div>
+</div>
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>

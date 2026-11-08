@@ -1,0 +1,215 @@
+/* DiGiCo-style desk: always dark, like the hardware */
+#v-desk { color-scheme: dark; --bg: #0e1013; --bg2: #14171b; --panel: #1a1e23; --panel2: #22272e; --panel3: #2c323a; --line: #2e343c; --line2: #434b55; --text: #eef1f4; --dim: #98a2ae; --faint: #6a7480; --acc: #52b6ff; --acc-ink: #03192b; --mute: #ff4d55; --solo: #ffb627; --on: #38d67a; --sof: #c58bff; --track: #07080a;
+  --dscr: #0a0e13; --dsec: #121922; --dline: #24303c; background: #17191c; color: var(--text); gap: .25rem; padding: .25rem; font-size: .68rem; line-height: 1.15; }
+#v-desk.on { flex-direction: row; }
+.drail { flex: 0 0 7.2rem; display: flex; flex-direction: column; gap: .3rem; min-height: 0; background: linear-gradient(180deg, #24272b, #191b1e); border: 1px solid #000; border-radius: .25rem; padding: .3rem; }
+.dbanks { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: .4rem; scrollbar-width: thin; }
+.dgroup { display: flex; flex-direction: column; gap: .15rem; }
+.drail h3 { font-size: .58rem; letter-spacing: .08em; }
+.drail button { min-height: 1.75rem; padding: .1rem .25rem; font-size: .68rem; font-weight: 650; background: #101317; border: 1px solid #000; box-shadow: inset 0 1px 0 rgba(255,255,255,.07); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: none; }
+.drail button.on { background: var(--acc); color: var(--acc-ink); box-shadow: 0 0 .5rem color-mix(in srgb, var(--acc) 60%, transparent); }
+.drail button:disabled { opacity: .45; }
+.dfn { flex: none; display: flex; flex-direction: column; gap: .2rem; border-top: 1px solid #000; padding-top: .3rem; }
+.dfn select { min-height: 1.9rem; font-size: .7rem; padding: .1rem .2rem; background: #101317; border-color: #000; width: 100%; }
+.drail button.dflip.on { background: var(--sof); color: #1a0a2e; }
+.dstrips { flex: 1; min-width: 0; display: flex; gap: 1px; background: #000; border: 1px solid #000; border-radius: .25rem; overflow: hidden; }
+.dmasters { flex: none; display: flex; gap: 1px; background: #000; border: 1px solid #000; border-radius: .25rem; overflow: hidden; }
+.strip.dstrip { flex: 1 1 0; min-width: 0; border: 0; border-radius: 0; background: #1b1d20; box-shadow: none; }
+.strip.dstrip.master { flex: 0 0 5.6rem; }
+.dstrip.blank { flex: 1 1 0; min-width: 0; background: linear-gradient(180deg, var(--dscr) 0 52%, #1b1d20 52%); }
+.dscreen { flex: none; display: flex; flex-direction: column; background: var(--dscr); border-bottom: 2px solid #000; }
+.ds { position: relative; flex: none; display: flex; align-items: center; gap: .2rem; padding: 0 .18rem; background: var(--dsec); border-bottom: 1px solid var(--dline); overflow: hidden; min-width: 0; }
+.ds.tap { cursor: pointer; }
+.ds.tap:hover { background: #18222e; }
+.ds.none { visibility: hidden; }
+.ds.off > :not(.dt) { opacity: .45; }
+.ds b, .dv, .dn { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.dv { flex: 1; text-align: right; color: #c9d3dd; font-size: .64rem; }
+.dl { color: var(--faint); font-size: .54rem; font-weight: 700; }
+.ds-src { height: 1.45rem; }
+.ds-src b { font-weight: 600; font-size: .64rem; color: #9fd0ff; }
+.ds-gain { height: 2.75rem; flex-direction: column; align-items: stretch; gap: .12rem; padding-block: .12rem; }
+.dgv { flex: 1; display: grid; place-items: center; font-size: .86rem; font-weight: 700; color: #ffd27a; background: #05080b; border-radius: .15rem; cursor: ns-resize; touch-action: none; white-space: nowrap; overflow: hidden; }
+.dgb { display: flex; gap: .12rem; }
+.ds-hpf, .ds-ins { height: 1.45rem; }
+.ds-eq { height: 3.1rem; align-items: stretch; flex-direction: column; gap: 0; padding: .1rem .18rem; }
+.ds-eq .dt { position: absolute; top: .14rem; left: .18rem; z-index: 1; }
+.ds-eq .thumb { flex: 1; height: auto; background: #05080b; border: 0; border-radius: .15rem; min-height: 0; }
+.ds-eq .thumb path { stroke: #4fe08a; stroke-width: 1.6; }
+.ds-gate, .ds-comp { height: 1.7rem; padding-bottom: .24rem; }
+.gr { position: absolute; left: .18rem; right: .18rem; bottom: .08rem; height: .14rem; background: #05080b; display: flex; justify-content: flex-end; }
+.gr .grb { display: block; height: 100%; width: 0; background: var(--mute); }
+.ds-send { height: 2.3rem; padding: .12rem .18rem; }
+.dsg { flex: 1; display: grid; grid-template-columns: repeat(var(--n), 1fr); grid-auto-rows: 1fr; gap: 1px; height: 100%; }
+.dsg span { position: relative; background: #05080b; overflow: hidden; }
+.dsg i { position: absolute; left: 0; right: 0; bottom: 0; background: #3f9dff; }
+.dsg span.off i { background: #4a525c; }
+.dsg span.hi { outline: 1px solid #ffd27a; z-index: 1; }
+.ds-pan { height: 1.15rem; padding: 0; background: #05080b; cursor: ew-resize; touch-action: none; }
+.ds-pan i { position: absolute; top: .16rem; bottom: .16rem; background: #3f9dff; min-width: 2px; }
+.ds-pan::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--line2); }
+.dpv { position: relative; margin: auto; font-size: .56rem; color: #dde6ee; z-index: 1; text-shadow: 0 0 .15rem #000; }
+.ds-name { height: 2.25rem; flex-direction: column; align-items: stretch; justify-content: center; gap: 0; background: color-mix(in srgb, var(--c) 42%, #10151b); border-bottom: 0; border-top: .16rem solid var(--c); }
+.ds-name.tap:hover { background: color-mix(in srgb, var(--c) 55%, #10151b); }
+.dn { font-size: .55rem; color: #cdd6df; font-weight: 700; }
+.ds-name b { font-size: .74rem; font-weight: 700; min-height: .9rem; }
+.dstrip.sel .ds-name { box-shadow: inset 0 0 0 2px var(--acc); }
+.dstrip.sel .dbtn .bsel { background: var(--acc); border-color: var(--acc); color: var(--acc-ink); }
+button.dt { flex: none; min-height: 1.1rem; padding: 0 .22rem; font-size: .54rem; font-weight: 800; letter-spacing: .02em; line-height: 1; background: #232c36; border: 1px solid #000; border-radius: .14rem; color: #85919d; }
+.dgb .dt { flex: 1; }
+button.dt.on { color: #04110a; background: #4fe08a; }
+button.dt.p48.on { background: #ff4d55; color: #fff; }
+button.dt.inv.on { background: #ffb627; }
+button.dt.hpf.on { background: #52b6ff; }
+button.dt.gate.on { background: #ffd23f; }
+button.dt.comp.on { background: #ff9d2e; }
+button.dt.ins.on { background: #c58bff; }
+.ds-ins.active button.dt:not(.on) { color: #c58bff; border-color: #c58bff; }
+.dpanel { flex: 1; min-height: 0; display: flex; flex-direction: column; background: linear-gradient(180deg, #292c30, #1a1c1f 3rem); }
+.drot { flex: none; display: flex; flex-direction: column; align-items: center; padding: .2rem 0 .1rem; cursor: ns-resize; touch-action: none; }
+.drot svg { width: 2.5rem; height: 2.5rem; display: block; }
+.drot circle { fill: none; }
+.rb { stroke: #05080b; stroke-width: 3; stroke-dasharray: 75 100; }
+.rv { stroke: #52b6ff; stroke-width: 3; filter: drop-shadow(0 0 .1rem #52b6ff); }
+.drot circle.rk { fill: #0e0f11; stroke: #3b3f45; stroke-width: 1; }
+.rt { stroke: #e9edf1; stroke-width: 1.6; stroke-linecap: round; }
+.rval { font-size: .6rem; color: #c9d3dd; white-space: nowrap; max-width: 100%; overflow: hidden; }
+.drot.off { opacity: .28; cursor: default; }
+.drot.off .rv, .drot.off .rt { display: none; }
+.dbtn { flex: none; display: flex; flex-direction: column; gap: .12rem; padding: .12rem .2rem; }
+.dbtn button { min-height: 1.45rem; padding: 0; font-size: .58rem; font-weight: 800; letter-spacing: .03em; background: #101317; border: 1px solid #000; box-shadow: inset 0 1px 0 rgba(255,255,255,.08); color: #8b95a0; }
+.dbtn .bm.on { box-shadow: 0 0 .45rem var(--mute); color: #fff; }
+.dbtn .bs.on { box-shadow: 0 0 .45rem var(--solo); color: #1a1100; }
+.dstrip .fz { min-height: 3rem; padding: .95rem .1rem; gap: .1rem; }
+.dstrip .scale { width: .95rem; font-size: .5rem; color: #a4adb7; }
+.dstrip .track { min-width: 1rem; }
+.dstrip .track::before { width: .22rem; margin-left: -.11rem; background: #000; }
+.dstrip .cap { width: 1.55rem; height: 1.85rem; margin-left: -.775rem; margin-bottom: -.925rem; border-radius: .14rem; background: linear-gradient(180deg, #4a4f55, #2e3136 46%, #dfe3e7 46%, #dfe3e7 54%, #2e3136 54%, #1d1f22); }
+.dstrip .cap::after { display: none; }
+.dstrip .mtr { width: .34rem; }
+.dstrip .fv { background: #05080b; border-top: 1px solid #000; color: #ffd27a; font-size: .68rem; }
+.strip.dstrip.muted .cap { filter: none; }
+.strip.dstrip.muted .ds-name { filter: saturate(.5); }
+/* Options: follow the console bank, hide the faders */
+.dchk { display: flex; align-items: center; gap: .3rem; font-size: .66rem; min-height: 1.7rem; color: #c9d3dd; }
+.dchk input { flex: none; }
+.dnow { font-weight: 700; font-size: .78rem; color: #9fd0ff; padding: .2rem 0; }
+.dgroup select { min-height: 1.9rem; font-size: .7rem; padding: .1rem .2rem; background: #101317; border-color: #000; width: 100%; }
+.fbank .dstrips { overflow-x: auto; scrollbar-width: thin; }
+.fbank .strip.dstrip { min-width: 2.7rem; }
+.strip.dstrip.grpstart { border-left: .2rem solid var(--acc); }
+.drailtab { flex: 0 0 1.4rem; align-self: stretch; padding: 0; min-height: 0; background: #1b1d20; border: 1px solid #000; border-radius: .25rem; color: var(--dim); }
+.screen .dscreen { flex: 1; min-height: 0; overflow-y: auto; border-bottom: 0; scrollbar-width: none; }
+/* Every row grows in proportion to its size, so the column fills the full height. */
+.screen .ds-src { flex: 1.7 0 1.7rem; height: auto; }
+.screen .ds-gain { flex: 3.6 0 3.6rem; height: auto; }
+.screen .dgv { font-size: 1rem; }
+.screen :is(.ds-hpf, .ds-gate, .ds-comp, .ds-ins) { flex: 2.5 0 2.5rem; height: auto; flex-direction: column; align-items: stretch; justify-content: center; gap: .12rem; padding-block: .1rem .24rem; }
+.screen .dv { font-size: .72rem; flex: none; }
+.screen button.dt { min-height: 1.15rem; }
+.screen .ds-eq { flex: 4.5 0 4.5rem; height: auto; }
+.screen .ds-send { flex: 3 0 3rem; height: auto; }
+.screen .ds-pan { flex: 1.4 0 1.4rem; height: auto; }
+.screen .ds-lvl { flex: 8 0 6rem; height: auto; align-items: stretch; gap: .25rem; padding: .25rem .18rem; }
+.ds-lvl { height: 3.4rem; align-items: stretch; justify-content: center; padding: .2rem .18rem; }
+.dlm { flex: none; display: flex; gap: .12rem; }
+.dlm .mtr { width: .5rem; }
+.dli { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: stretch; gap: .15rem; justify-content: flex-end; text-align: center; }
+.dlv { font-size: .78rem; color: #ffd27a; }
+.dbadge { display: block; font-size: .56rem; font-weight: 800; padding: .14rem 0; border-radius: .14rem; background: #101317; color: #5d6771; }
+.dbadge.bm.on { background: var(--mute); color: #fff; }
+.dbadge.bs.on { background: var(--solo); color: #1a1100; }
+.screen .ds-name { flex: 2.6 0 2.6rem; height: auto; }
+.screen .ds-name b { font-size: .84rem; }
+.strip.dstrip.muted .ds-name { border-top-color: var(--mute); }
+@media (max-height: 760px) {
+  #v-desk:not(.screen) .ds-send { height: 1.5rem; } #v-desk:not(.screen) .ds-gain { height: 2.4rem; } #v-desk:not(.screen) .ds-eq { height: 2.4rem; } #v-desk:not(.screen) :is(.ds-src, .ds-hpf, .ds-ins) { height: 1.25rem; } #v-desk:not(.screen) .ds-name { height: 2rem; } #v-desk:not(.screen) .ds-lvl { height: 2.6rem; }
+  .drot svg { width: 2.1rem; height: 2.1rem; }
+}
+@media (max-height: 640px) {
+  #v-desk:not(.screen) :is(.ds-src, .ds-hpf, .ds-ins, .ds-send) { display: none; }
+  #v-desk:not(.screen) .ds-lvl { height: 2rem; }
+  .dbtn { flex-direction: row; } .dbtn button { flex: 1; min-width: 0; font-size: .5rem; }
+}
+@media (max-height: 500px) {
+  #v-desk:not(.screen) :is(.ds-eq, .ds-gate, .ds-comp, .ds-gain, .ds-pan) { display: none; }
+  #v-desk:not(.screen) .ds-lvl { height: 1.4rem; }
+  .drot svg { width: 1.7rem; height: 1.7rem; }
+}
+@media (max-width: 760px) {
+  #v-desk { padding-bottom: calc(3.5rem + env(safe-area-inset-bottom)); }
+  #v-desk.on { flex-direction: column; }
+  .drail { flex: none; flex-direction: row; align-items: center; padding: .2rem; overflow-x: auto; scrollbar-width: none; }
+  .dbanks { flex: none; flex-direction: row; overflow: visible; }
+  .dgroup { flex-direction: row; align-items: center; }
+  .dgroup h3 { display: none; }
+  .drail button { min-width: 3.5rem; min-height: 2.2rem; }
+  .dfn { flex-direction: row; align-items: center; border-top: 0; padding: 0 0 0 .3rem; border-left: 1px solid #000; }
+  .dfn h3 { display: none; }
+  .dfn select { width: 5.5rem; min-height: 2.2rem; }
+  .dstrips { flex: 1; min-height: 0; }
+  .dbtn button { min-height: 1.9rem; }
+}
+/* Short screens: keep every row of the screen in view */
+@media (max-height: 760px) {
+  .screen .ds-lvl { flex: 8 0 3.5rem; }
+  .screen .ds-src { flex-basis: 1.4rem; }
+  .screen .ds-gain { flex-basis: 2.6rem; }
+  .screen :is(.ds-hpf, .ds-gate, .ds-comp, .ds-ins) { flex-basis: 2.1rem; padding-block: .05rem .2rem; gap: .05rem; }
+  .screen .ds-eq { flex-basis: 2.5rem; }
+  .screen .ds-send { flex-basis: 1.5rem; }
+  .screen .ds-name { flex-basis: 2.2rem; }
+  .screen .ds-pan { flex-basis: 1.2rem; }
+  .screen button.dt { min-height: 1rem; }
+}
+/* Meters off: the row holds only level, mute and solo */
+.ds-lvl.nom { flex: none; height: 3.2rem; }
+.screen .ds-lvl.nom { flex: 3.2 0 3.2rem; height: auto; }
+.ds-lvl.nom, .screen .ds-lvl.nom { height: 3.8rem; }
+.ds-lvl.nom .dli { justify-content: center; }
+/* Window beside the channel strip */
+.dpop { position: fixed; z-index: 45; width: min(30rem, calc(100vw - 8px)); height: min(30rem, calc(100dvh - 8px)); display: flex; flex-direction: column; background: var(--bg2); border: 1px solid var(--acc); border-radius: .4rem; box-shadow: 0 .6rem 2rem rgba(0,0,0,.7); overflow: hidden; }
+.dpop.dpop-eq { width: min(44rem, calc(100vw - 8px)); height: min(34rem, calc(100dvh - 8px)); }
+.dpopbar { flex: none; display: flex; align-items: center; gap: .5rem; padding: .25rem .4rem; background: var(--panel); border-bottom: 1px solid var(--line); }
+.dpopbar b { flex: 1; min-width: 0; font-size: .8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dpopbar .seg button { min-height: 2rem; padding-inline: .7rem; }
+.dpopbar .seg button.on { background: var(--panel3); box-shadow: inset 0 -.12rem 0 var(--acc); }
+.dpopx { min-height: 2rem; min-width: 2.2rem; padding: 0; }
+.dpop .fcards { padding: .3rem; gap: .3rem; }
+.dpop .fcards .card { padding: .4rem .5rem; gap: .3rem; }
+.dpop .pr { min-height: 1.7rem; }
+/* RTA switch on the EQ graph */
+.rtab { position: absolute; top: .25rem; right: .25rem; z-index: 2; min-height: 1.5rem; padding: 0 .45rem; font-size: .62rem; font-weight: 800; background: rgba(0,0,0,.55); color: var(--dim); }
+.rtab.on { color: #ffd27a; border-color: #ffd27a; }
+/* 48 V and phase state in the gain section */
+.dgi { flex: 1; text-align: center; font-size: .56rem; font-weight: 800; line-height: 1.5; border-radius: .14rem; background: #101317; color: #5d6771; }
+.dgi.p48.on { background: var(--mute); color: #fff; }
+.dgi.inv.on { background: #ffb627; color: #1a1100; }
+/* Rename field over the channel name */
+#dname { position: fixed; z-index: 60; width: 9rem; height: 2.4rem; padding: 0 .4rem; font-size: max(16px, .84rem); font-weight: 700; color: #fff; background: #05080b; border: 2px solid var(--acc); border-radius: .25rem; }
+/* Aux knobs */
+.ds-send.knobs, #v-desk:not(.screen) .ds-send.knobs { height: auto; flex-direction: column; align-items: stretch; gap: .1rem; padding: .1rem .12rem .15rem; }
+.screen .ds-send.knobs { flex: 8 0 auto; justify-content: center; }
+.dskh { font-size: .56rem; font-weight: 800; color: #9fd0ff; text-align: center; line-height: 1.4; }
+.dskg { display: grid; grid-template-columns: repeat(auto-fill, minmax(1.7rem, 1fr)); gap: .1rem; justify-items: center; }
+.dsk { position: relative; width: 100%; max-width: 2.3rem; aspect-ratio: 1; cursor: ns-resize; touch-action: none; }
+.dsk svg { display: block; width: 100%; height: 100%; }
+.dsk circle { fill: none; }
+.dsk circle.rk { fill: #0e0f11; stroke: #3b3f45; stroke-width: 1; }
+.dsk span { position: absolute; inset: 0; display: grid; place-items: center; font-size: .56rem; font-weight: 700; color: #dde6ee; pointer-events: none; }
+.dsk.off .rv { stroke: #4a525c; filter: none; }
+.dsk.off span { color: #5d6771; }
+.dsk.hi circle.rk { stroke: #ffd27a; }
+/* Selected channel: a frame and tint over the whole strip */
+.strip.dstrip { position: relative; }
+.strip.dstrip.sel::after { content: ""; position: absolute; inset: 0; z-index: 5; pointer-events: none; border: 2px solid var(--acc); background: color-mix(in srgb, var(--acc) 10%, transparent); }
+.dnote { font-size: .6rem; color: var(--dim); padding: .1rem 0; }
+/* Gate lights and comp gain reduction meter, at the right of the row */
+.ds.lt { padding-right: .75rem; }
+.dgl { position: absolute; top: 0; bottom: 0; right: .16rem; display: flex; flex-direction: column; justify-content: center; gap: .14rem; pointer-events: none; }
+.dgl i { display: block; width: .4rem; height: .4rem; border-radius: 50%; background: #262b31; box-shadow: inset 0 0 0 1px #000; }
+.dgl i.r.on { background: #ff4d4d; box-shadow: 0 0 .3rem #ff4d4d; }
+.dgl i.a.on { background: #ffb627; box-shadow: 0 0 .3rem #ffb627; }
+.dgl i.g.on { background: #38d67a; box-shadow: 0 0 .3rem #38d67a; }
+.dcm { position: absolute; top: .2rem; bottom: .2rem; right: .2rem; width: .36rem; background: #05080b; border-radius: .1rem; overflow: hidden; pointer-events: none; }
+.dcm i { position: absolute; top: 0; left: 0; right: 0; height: 0; background: linear-gradient(#ffb627, #ff4d4d); }
