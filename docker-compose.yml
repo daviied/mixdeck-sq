@@ -12,6 +12,7 @@ services:
       SQ_IP: ${SQ_IP:-}
       SQ_MOCK: ${SQ_MOCK:-0}
       PORT: ${PORT:-8080}
+      SQ_UDP_PORT: ${SQ_UDP_PORT:-51327}
     volumes:
       - /DATA/AppData/mixdeck-sq:/data
 x-casaos:
